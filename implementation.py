@@ -34,39 +34,40 @@ def evaluate(filepath,language):
   linenumber =0
 
   for line in lines:
-    x = regex.search("gets[(].*[)]", line)
+    x = regex.finditer("gets[(].*[)]", line)
     line = line.strip()
     linenumber = linenumber + 1
     if x:
        countgets = countgets + 1
-      # print(x.span(), x.lastindex)
        for m in regex.finditer("gets[(].*[)]", line):
            newMatch = Match(linenumber,m.start(),m.end(),line[(m.start() + 5 ): (m.end()- 1)])
-           # newMatch.line = linenumber
-           # newMatch.start = m.start()
-           # newMatch.end = m.end()
-           # newMatch.param = line[(m.start() + 5 ): (m.end()- 1)]
+           newMatch.line = linenumber
+           newMatch.start = m.start()
+           newMatch.end = m.end()
+           newMatch.param = line[(m.start() + 5 ): (m.end()- 1)]
 
            # print("line :", linenumber)
-           # print('%02d-%02d: %s' % (m.start(), m.end(), m.group(0)))
-           # print( "at line: ", newMatch.line)
-           # print("\n start at index: ", newMatch.start)
-           # print("\n ends at index: ", newMatch.end)
-           # print("\n param: ", newMatch.param)
+           print ("WARNING")
+           print("at line: ", newMatch.line)
+           print('index(start- end) %02d-%02d: %s' % (m.start(), m.end(), m.group(0)))
 
-    elif countgets> 0:
+           # print("start at index: ", newMatch.start)
+           # print(" ends at index: ", newMatch.end)
+           # print(" param: ", newMatch.param)
 
-
-     for m in regex.finditer(newMatch.param, line):
-
-        paraMatch = Match(linenumber,m.start(),m.end(),"null")
-        line = line.strip()
-        paraMatch = Match(linenumber - 1, m.start(), m.end(), line[(m.start() + 5): (m.end() - 1)])
-     if m:
-        print("at line: ", paraMatch.line)
-        # print("at start index: ", paraMatch.start)
-        # print("at end index: ", paraMatch.end)
-        linenumber = linenumber + 1
+    # elif countgets> 0:
+    #
+    #
+    #  for m in regex.finditer(newMatch.param, line):
+    #
+    #     paraMatch = Match(linenumber,m.start(),m.end(),"null")
+    #     line = line.strip()
+    #     paraMatch = Match(linenumber - 1, m.start(), m.end(), line[(m.start() + 5): (m.end() - 1)])
+    #  if m:
+    #     print("at line: ", paraMatch.line)
+    #     # print("at start index: ", paraMatch.start)
+    #     # print("at end index: ", paraMatch.end)
+    #     linenumber = linenumber + 1
 
 
       # print("\n start at index: ", paraMatch.start)

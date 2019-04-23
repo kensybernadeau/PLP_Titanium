@@ -9,6 +9,7 @@ int main () {
     }
     if (allow != 0) { // has been overwritten by the overflow of the username.
         privilegedAction();
+        gets(username);
     }
     return 0;
 }
