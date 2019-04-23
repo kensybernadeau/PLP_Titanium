@@ -20,6 +20,10 @@ def evaluate(filepath,language):
  global m1
  global lines
  global countgets
+
+ global line_Strcpy
+ global line_Print
+
  if language == 'c':
 
   file = open (filepath, 'r')
@@ -54,6 +58,44 @@ def evaluate(filepath,language):
            # print("start at index: ", newMatch.start)
            # print(" ends at index: ", newMatch.end)
            # print(" param: ", newMatch.param)
+
+  line_Strcpy = 0
+  for line in lines:
+    is_strcpy = regex.finditer("strcpy[(].*[)]", line)
+    line = line.strip()
+    line_Strcpy = line_Strcpy + 1
+
+    if is_strcpy:
+
+        for m in regex.finditer("strcpy[(].*[)]", line):
+            newMatch = Match(line_Strcpy, m.start(), m.end(), line[(m.start() + 5): (m.end() - 1)])
+            newMatch.line = line_Strcpy
+            newMatch.start = m.start()
+            newMatch.end = m.end()
+            newMatch.param = line[(m.start() + 5): (m.end() - 1)]
+
+            print("WARNING")
+            print("at line: ", newMatch.line)
+            print('index(start- end) %02d-%02d: %s' % (m.start(), m.end(), m.group(0)))
+
+  line_Printf = 0
+  for line in lines:
+    is_Printf = regex.finditer("printf[(].*[)]", line)
+    line = line.strip()
+    line_Printf = line_Printf + 1
+
+    if is_strcpy:
+
+        for m in regex.finditer("printf[(].*[)]", line):
+            newMatch = Match(line_Printf, m.start(), m.end(), line[(m.start() + 5): (m.end() - 1)])
+            newMatch.line = line_Printf
+            newMatch.start = m.start()
+            newMatch.end = m.end()
+            newMatch.param = line[(m.start() + 5): (m.end() - 1)]
+
+            print("WARNING")
+            print("at line: ", newMatch.line)
+            print('index(start- end) %02d-%02d: %s' % (m.start(), m.end(), m.group(0)))
 
     # elif countgets> 0:
     #
