@@ -3,7 +3,6 @@ import titanium_lexer as Titaniumlex
 
 from implementation import read
 from implementation import evaluate
-from implementation import duplicatewc
 from implementation import fileread
 from implementation import fileshow
 from implementation import savefile
