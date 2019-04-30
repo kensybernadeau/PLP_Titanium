@@ -39,9 +39,12 @@ def evaluate(filepath,language):
   count = count + printf_check(source)
   count = count + strcpy_check(source)
 
+  if(count == 0):
+      print("There are no vulnerabilities in your code!! :) ")
+  else:
+        print("There are "+str(count)+" potential vulnerabilities in the code")
 
-  print("Total potential vulnerabilities detected: " + str(count))
-  print("Please revise your code.")
+
   return 0
 
 
