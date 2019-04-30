@@ -86,7 +86,7 @@ def gets_check(source_code):
            print ("WARNING")
            print("at line: ", newMatch.line)
            print('index(start- end) %02d-%02d: %s' % (m.start(), m.end(), m.group(0)))
-
+    print("gets functions found: "+str(count_gets))
     return count_gets
 
 def printf_check(source_code):
@@ -111,6 +111,7 @@ def printf_check(source_code):
            print("at line: ", newMatch.line)
            print('index(start- end) %02d-%02d: %s' % (m.start(), m.end(), m.group(0)))
 
+    print("printf(parameter) functions found: "+str(count_printf))
     return count_printf
 
 def strcpy_check(source_code):
@@ -135,4 +136,5 @@ def strcpy_check(source_code):
            print("at line: ", newMatch.line)
            print('index(start- end) %02d-%02d: %s' % (m.start(), m.end(), m.group(0)))
 
+    print("strcpy(parameter) functions found: "+str(count_strcpy))
     return count_strcpy
