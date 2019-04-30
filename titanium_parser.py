@@ -43,7 +43,7 @@ def p_fun(p):
 
 
 def p_fun_without_operation(p):
-    '''fun_without_operation : FUN_WITHOUT_OPERATION LP STRING RP SEMICOLON'''
+    '''fun_without_operation : FUN_WITHOUT_OPERATION LP STRING RP '''
 
     if p[1].lower() == "process".lower():
 

@@ -7,6 +7,7 @@ Unused terminals:
     INT
     LKEY
     RKEY
+    SEMICOLON
 
 Grammar
 
@@ -19,7 +20,7 @@ Rule 5     assignment -> fun_assignment
 Rule 6     fun -> fun_no_param
 Rule 7     fun -> fun_single_param
 Rule 8     fun -> fun_without_operation
-Rule 9     fun_without_operation -> FUN_WITHOUT_OPERATION LP STRING RP SEMICOLON
+Rule 9     fun_without_operation -> FUN_WITHOUT_OPERATION LP STRING RP
 Rule 10    fun_no_param -> ID DOT FUN_NO_PARAM LP RP
 Rule 11    fun_single_param -> ID DOT FUN_SINGLE_PARAM LP STRING RP
 Rule 12    file_assignment -> ID EQUALS ID
@@ -41,7 +42,7 @@ LKEY                 :
 LP                   : 9 10 11
 RKEY                 : 
 RP                   : 9 10 11
-SEMICOLON            : 9
+SEMICOLON            : 
 STRING               : 9 11
 error                : 
 
@@ -73,7 +74,7 @@ state 0
     (14) empty -> .
     (10) fun_no_param -> . ID DOT FUN_NO_PARAM LP RP
     (11) fun_single_param -> . ID DOT FUN_SINGLE_PARAM LP STRING RP
-    (9) fun_without_operation -> . FUN_WITHOUT_OPERATION LP STRING RP SEMICOLON
+    (9) fun_without_operation -> . FUN_WITHOUT_OPERATION LP STRING RP
     (12) file_assignment -> . ID EQUALS ID
     (13) fun_assignment -> . ID EQUALS fun_without_operation
 
@@ -166,7 +167,7 @@ state 10
 
 state 11
 
-    (9) fun_without_operation -> FUN_WITHOUT_OPERATION . LP STRING RP SEMICOLON
+    (9) fun_without_operation -> FUN_WITHOUT_OPERATION . LP STRING RP
 
     LP              shift and go to state 14
 
@@ -184,7 +185,7 @@ state 13
 
     (12) file_assignment -> ID EQUALS . ID
     (13) fun_assignment -> ID EQUALS . fun_without_operation
-    (9) fun_without_operation -> . FUN_WITHOUT_OPERATION LP STRING RP SEMICOLON
+    (9) fun_without_operation -> . FUN_WITHOUT_OPERATION LP STRING RP
 
     ID              shift and go to state 17
     FUN_WITHOUT_OPERATION shift and go to state 11
@@ -193,7 +194,7 @@ state 13
 
 state 14
 
-    (9) fun_without_operation -> FUN_WITHOUT_OPERATION LP . STRING RP SEMICOLON
+    (9) fun_without_operation -> FUN_WITHOUT_OPERATION LP . STRING RP
 
     STRING          shift and go to state 19
 
@@ -228,7 +229,7 @@ state 18
 
 state 19
 
-    (9) fun_without_operation -> FUN_WITHOUT_OPERATION LP STRING . RP SEMICOLON
+    (9) fun_without_operation -> FUN_WITHOUT_OPERATION LP STRING . RP
 
     RP              shift and go to state 22
 
@@ -249,9 +250,9 @@ state 21
 
 state 22
 
-    (9) fun_without_operation -> FUN_WITHOUT_OPERATION LP STRING RP . SEMICOLON
+    (9) fun_without_operation -> FUN_WITHOUT_OPERATION LP STRING RP .
 
-    SEMICOLON       shift and go to state 25
+    $end            reduce using rule 9 (fun_without_operation -> FUN_WITHOUT_OPERATION LP STRING RP .)
 
 
 state 23
@@ -265,17 +266,10 @@ state 24
 
     (11) fun_single_param -> ID DOT FUN_SINGLE_PARAM LP STRING . RP
 
-    RP              shift and go to state 26
+    RP              shift and go to state 25
 
 
 state 25
-
-    (9) fun_without_operation -> FUN_WITHOUT_OPERATION LP STRING RP SEMICOLON .
-
-    $end            reduce using rule 9 (fun_without_operation -> FUN_WITHOUT_OPERATION LP STRING RP SEMICOLON .)
-
-
-state 26
 
     (11) fun_single_param -> ID DOT FUN_SINGLE_PARAM LP STRING RP .
 
