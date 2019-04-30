@@ -1,7 +1,9 @@
 import subprocess as sp
 import re as regex
 
+
 global newMatch
+
 
 class Match( object):
  def __init__(self, line, start, end, param):
@@ -9,6 +11,7 @@ class Match( object):
          self.start = start
          self.end = end
          self.param = param
+
 
 def read (file_path):
     return 0
@@ -21,9 +24,9 @@ def savefile(file_path):
 
 def evaluate(filepath,language):
 
+
 #Open the .c source code
  if language == 'c':
-
   file = open (filepath, 'r')
   source = file.readlines()
   # str = file.read()
@@ -36,9 +39,11 @@ def evaluate(filepath,language):
   count = count + printf_check(source)
   count = count + strcpy_check(source)
 
+
   print("Total potential vulnerabilities detected: " + str(count))
   print("Please revise your code.")
   return 0
+
 
 #Cross-platforming idea here
 def fileread(filePath):
