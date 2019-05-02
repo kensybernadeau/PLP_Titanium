@@ -4,7 +4,7 @@ import re as regex
 
 global newMatch
 
-
+# Create a match class
 class Match( object):
  def __init__(self, line, start, end, param):
          self.line = line
