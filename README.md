@@ -44,4 +44,4 @@ The project utilizes Python 3.5 or higher with the PLY package.
 
 ### **Final Report**
 ---
-View <a href="https://#####"> Final Report </a>
+View <a href="https://github.com/kensybernadeau/PLP_Titanium/blob/master/Final%20Report/Final%20Report.md"> Final Report </a>
