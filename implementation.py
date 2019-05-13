@@ -125,8 +125,8 @@ def strcpy_check(source_code):
     if is_strcpy:
        count_strcpy = count_strcpy + 1
        for m in regex.finditer("strcpy[(].*[)]", line):
-           newMatch = Match(line_Gets,m.start(),m.end(),line[(m.start() + 5 ): (m.end()- 1)])
-           newMatch.line = line_Gets
+           newMatch = Match(line_strcpy, m.start(),m.end(),line[(m.start() + 5 ): (m.end()- 1)])
+           newMatch.line = line_strcpy
            newMatch.start = m.start()
            newMatch.end = m.end()
            newMatch.param = line[(m.start() + 5 ): (m.end()- 1)]
