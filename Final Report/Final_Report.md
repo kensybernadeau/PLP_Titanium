@@ -19,7 +19,7 @@ There are three features about this language. First, it will detect the potentia
 display the location(the No. of line) where the risks occur. At last, the language can provide the 
 suggestions that may secure the program. 
 
-To run Titanium language, the user need Python 3.4 and the PLY package installed, then download the PLP_Titanium zip file from github and extract its content. Finally, the user needs to execute PLP_Titanium/titanium.py in order to run the language. 
+To run Titanium language, the user need Python 3.4 and the PLY package installed, then download the Titanium zip file from github and extract its content. Finally, the user needs to execute PLP_Titanium/titanium.py in order to run the language. 
 	This language will serve as a checkpoint before compilation: it will “read” the code and will prevent the code from being compiled if it detects any code fragment that could indicate an eventual security flaw in the system. It should detect vulnerabilities, such as buffer overflow, or a format String Exploit, among others. It should then cancel compilation and warn the user that there is a vulnerability in a specific fragment their code and would indicate how to best deal with the vulnerability. Therefore, the resulting code can have a secure structure, and the user (the programmer) can better understand and begin to code more carefully, avoiding the security risks that could arise.
  
 
@@ -101,10 +101,6 @@ def fileshow(fileName):
     return 0
 ```
 
-
-
-
-
 ---
 #### **Development Environment**
 ---
@@ -114,25 +110,13 @@ The following tools were used to develop Titanium Project:
 • PyCharm: IDE utilized to develop the project
 • Github: Platform hosting the source code.
 
+
 ### **Test Methodology**
 ---
-yacc.py is used to parse language syntax. Before showing an example, there are a few important bits of background that must be mentioned. 
-First, syntaxis usually specified in terms of a BNF grammar. 
-For example, if you wanted to parse simple arithmetic expressions, you might first write an unambiguous grammar specification like this:
-LR parsing is commonly implemented by shifting grammar symbols onto a stack and looking at the stack and the next input token for patterns that match one of the grammar rules.
-When parsing the expression, an underlying state machine and the current input token determine what happens next. 
-If the next token looks like part of a valid grammar rule (based on other items on the stack), it is generally shifted onto the stack. If the top of the stack contains a valid right-hand-side of a grammar rule, it is usually "reduced" and the symbols replaced with the symbol on the left-hand-side. When this reduction occurs, the appropriate action is triggered (if defined).
-If the input token can't be shifted and the top of stack doesn't match any grammar rules, a syntax error has occurred and the parser must take some kind of recovery step (or bail out). 
-A parse is only successful if the parser reaches a state where the symbol stack is empty and there are no more input tokens.
-It is important to note that the underlying implementation is built around a large finite-state machine that is encoded in a collection of tables. 
-the parser chooses to shift a token onto the stack 
-The ply.yacc module implements the parsing component of PLY. The name "yacc" stands for "Yet Another Compiler Compiler" and is borrowed from the Unix tool of the same name.
-### **Test Programs**
----
+As of the time of making this project, the way we've been testing the Titanium framework language is through the way of creating intentionally vulnerable files written in C, such that the language can read the source code files at a time and detect the vulnerabilities. This form of testing is known as Gray-Box Testing.  Keep in mind that it would take time to implement the detection every common C vulnerabilities as there are many variations of such.
+
 
 ### **Conclusion**
 ---
-The result of this work was a functional language that can detect insecure coding in its early stages. The two proposed main features were successfully implemented and are fully operational. PLP_Titanium’s grammar was designed to be as close as possible to English sentences. This resulted in an intuitive grammar for users who had no prior experience in C programming. The biggest challenge faced during this project was implementing the parse. 
-PLP_Titanium has potential to make other aspects of checkpoints. Some of the future features that the team is interested in developing for PLP_Titanium are: multiple file detection, manipulation for insecure C programming. In conclusion, PLP_Titanium has potential to become a powerful tool in the field of software development.
-
-
+The result of this work was a functional language that can detect insecure coding in its early stages. The two proposed main features were successfully implemented and are fully operational. Titanium’s grammar was designed to be as close as possible to English sentences. This resulted in an intuitive grammar for users who had no prior experience in C programming. The biggest challenge faced during this project was implementing the parse. 
+Titanium has potential to make other aspects of checkpoints. Some of the future features that the team is interested in developing for Titanium are: multiple file detection, manipulation for insecure C programming. In conclusion, Titanium has potential to become a powerful tool in the field of software development.
