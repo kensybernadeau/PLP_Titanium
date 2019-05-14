@@ -95,5 +95,42 @@ def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
+
+def t_COMMENT(t):
+    r'\#.*'
+    pass
+    # No return value. Token discarded
+
+# Using this, it is usually possible to compute column information as a separate step.
+# For instance, just count backwards until you reach a newline.
+# Compute column.
+# input is the input text string
+#  token is a token instance
+def find_column(input, token):
+    line_start = input.rfind('\n', 0, token.lexpos) + 1
+    return (token.lexpos - line_start) + 1
+
+# The t_eof() function is used to handle an end-of-file (EOF) condition in the input.
+# As input, it receives a token type 'eof' with the lineno and lexposattributes set appropriately.
+# The main use of this function is provide more input to the lexer so that it can continue to parse.
+# I leave it for possible new functionality
+ # EOF handling rule
+# def t_eof(t):
+#     # Get more input (Example)
+#     more = raw_input('... ')
+#     if more:
+#         self.lexer.input(more)
+#         return self.lexer.token()
+#     return None
+
+
 # Lexer
+# For improved performance, it may be desirable to use Python's optimized mode
+lexer1 = lex.lex(optimize=1)
+# For the purpose of debugging, we can use this method
+# I leave this method method commented for possible new functionality.
+# lexer = lex.lex(debug=1)
+
+
 lexer = lex.lex(reflags=re.UNICODE)
+
