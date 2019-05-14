@@ -22,10 +22,19 @@ suggestions that may secure the program.
 #### Example: 
 ```
 IN-> f = process("<insert source code here>.c")
+Code File uploaded
+File processed!
 
 IN-> f.evaluate()
+WARNING
+at line:  6
+index(start- end) 00-14: gets(username)
+WARNING
+at line:  12
+index(start- end) 00-14: gets(username)
 
 IN-> f.open()
+//Opens Notepad++ on Windows or nano on Linux and MacOS
 
 ```
 ### **Video Tutorial**
@@ -39,10 +48,10 @@ https://kensybernadeau.github.io/PLP_Titanium/
 ### **Install**
 ---
 #### Dependencies
-The project utilizes Python 3.5 or higher with the PLY package.
+The project utilizes Python 3.x or higher with the PLY package.
 
 #### Instructions
-* Install Python 3.4 and the PLY package.
+* Install Python 3.x and the PLY package.
 * Download <a href="https://github.com/kensybernadeau/PLP_Titanium/archive/master.zip"> PLP_Titanium </a>
 * Run ```python PLP_Titanium/src/Titanium.py``` from the system's respective command line interface
 
