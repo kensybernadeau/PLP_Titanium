@@ -1,5 +1,6 @@
 import ply.yacc as yacc
 import titanium_lexer as Titaniumlex
+import os
 
 from implementation import read
 from implementation import evaluate
@@ -126,6 +127,29 @@ def p_fun_assignment(p):
     if p[3][0] == "process":
 
         path = p[3][1].replace('"', '')
+        if path.endswith('/'):
+            # print(path)
+            print("You are about to evaluate the folder instead of one file.")
+            response = input("Want to proceed this? Y/N")
+            if(response == "Y"):
+                entries = os.listdir(path)
+                list_New = list()
+
+                for entry in entries:
+                    if (entry.endswith('.c')):
+                        list_New.append(entry)
+
+                print("These are the files under evaluation.")
+                print(list_New)
+                for e in list_New:
+                    new_Path = path + e
+                    print(new_Path)
+                    evaluate(new_Path, 'c')
+
+
+            else:
+                print("Will not run this method.")
+                return
         if not path.endswith(('.txt', '.c')):
             try:
                 if(path.endswith('.')):
