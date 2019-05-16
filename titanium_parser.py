@@ -25,8 +25,8 @@ def p_help(p):
         print('''
                 TITANIUM HELP
 
-                Process a file:
-                <variable name> =  process("</file/path/to/source/code>")
+                Process a file or directory:
+                <variable name> =  process("/file/path/to/source/")
 
                 Evaluate a file:
                 <variable name>.evaluate()
