@@ -42,8 +42,6 @@ def fileread(filePath):
     elif(os_name in 'Darwin'):
         sp.call(['/usr/bin/nano', filePath])
     #sp.call(['C:/Program Files/Notepad++/notepad++.exe', filePath])
-    stderr = sp.STDOUT
-    print( stderr )
     return filePath
 
 def fileshow(fileName):
