@@ -32,6 +32,22 @@ def evaluate(filepath,language):
         print("Total potential vulnerabilities detected: " + str(count))
         return 0
 
+def evaluate_overflow(filepath, language):
+    if language == 'c':
+        file = open(filepath,'r')
+        source = file.readlines()
+        file.close()
+
+        count = 0
+
+        count = count + gets_check(source)
+        count = count + strcpy_check(source)
+
+        print("Total potential overflows detected: " + str(count))
+        return 0
+
+
+
 #Cross-platforming idea here
 def fileread(filePath):
     os_name = platform.system()

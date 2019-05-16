@@ -6,7 +6,7 @@ import re
 
 # reserved Words
 reserved = {
-    'FUN_NO_PARAM': ['evaluate','BufferOverFlow','open','show'],
+    'FUN_NO_PARAM': ['evaluate','evaluateOverflow','open','show'],
     'FUN_WITHOUT_OPERATION': ['process'],
     'FUN_SINGLE_PARAM': ['open'],
 

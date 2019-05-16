@@ -6,7 +6,7 @@ from implementation import read
 from implementation import evaluate
 from implementation import fileread
 from implementation import fileshow
-
+from implementation import evaluate_overflow
 
 
 tokens = Titaniumlex.tokens
@@ -92,6 +92,11 @@ def p_fun_no_param(p):
         fileshow(files[p[1]])
         # f = open(duplicatedpath, "r")
 
+#    elif p[3] == 'evaluateOverflow':
+#        print("went through!!!!!")
+#        if files[p[1]].endswith('.c'):
+#            print("C file detected!!")
+        #evaluate_overflow(duplicatedpath, 'c')
 
 
 
@@ -117,6 +122,7 @@ def p_fun_single_param(p):
                 print('open')
 
                 fileshow(duplicatedpath)
+
 
 
 
