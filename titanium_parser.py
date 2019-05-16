@@ -18,6 +18,22 @@ files = {}
 # ===========================================================================================
 # Parsing rules
 # ===========================================================================================
+def p_help(p):
+    '''statement : ID'''
+
+    if p[1].lower() == "help":
+        print('''
+                TITANIUM HELP
+
+                Process a file:
+                <variable name> =  process("</file/path/to/source/code>")
+
+                Evaluate a file:
+                <variable name>.evaluate()
+
+                Open a file:
+                <variable name>.open()
+                ''')
 
 def p_statement(p):
     '''statement : fun
@@ -192,7 +208,8 @@ def p_empty(p):
     p[0] = None
 
 def p_error(p):
-    print(" Syntax error: invalid syntax ")
+    print("Syntax error: invalid syntax ")
+    print("Type \'help\' to print out help")
 
 
 def getparser():
