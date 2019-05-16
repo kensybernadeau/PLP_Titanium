@@ -1,6 +1,6 @@
 ### **Titanium**
 ---
-The Titanium System is a flexible framework for checking the vulnerabilities of C programming 
+Titanium is a flexible framework for checking the vulnerabilities of C programming 
 language and then providing suggestions of modification. This system has a collection of method that aim 
 to find the potential risk of C language across various operating systems, such as Windows, Linux, MacOS.   
 
@@ -48,7 +48,7 @@ https://kensybernadeau.github.io/PLP_Titanium/
 ### **Install**
 ---
 #### Dependencies
-The project utilizes Python 3.x or higher with the PLY package.
+The project utilizes Python 3.x with the PLY package.
 
 #### Instructions
 * Install Python 3.x and the PLY package.
