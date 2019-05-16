@@ -81,8 +81,11 @@ def p_fun_no_param(p):
         return p
 
     if p[3] == 'evaluate':
-            #duplicatedpath = files[p[1]].copy()
-     if files[p[1]].endswith('.c'):
+#        print(files[p[1]])
+#        if os.path.isdir(files[p[1]]):
+#            print("DIRECTORY")
+
+        if files[p[1]].endswith('.c'):
             evaluate(files[p[1]], 'c')
 
     elif p[3] == "open":
@@ -149,11 +152,11 @@ def p_fun_assignment(p):
     if p[3][0] == "process":
 
         path = p[3][1].replace('"', '')
-        if path.endswith('/'):
+        if os.path.isdir(path):
             # print(path)
             print("You are about to evaluate the folder instead of one file.")
             response = input("Want to proceed this? Y/N")
-            if(response == "Y"):
+            if(response.upper() == "Y"):
                 entries = os.listdir(path)
                 list_New = list()
 
@@ -164,38 +167,42 @@ def p_fun_assignment(p):
                 print("These are the files under evaluation.")
                 print(list_New)
                 for e in list_New:
-                    new_Path = path + e
+                    if path.endswith('/'):
+                        new_Path = path + e
+                    else:
+                        new_Path = path +'/'+ e
                     print(new_Path)
                     evaluate(new_Path, 'c')
-
-
             else:
-                print("Will not run this method.")
+                print("Processing aborted.")
                 return
-        if not path.endswith(('.txt', '.c')):
-            try:
-                if(path.endswith('.')):
-                    path = path +'txt'
-                else:
-                    path = path + '.txt'
-                    files[p[1]] = path
-                    # fileshow(files[p[1]])
 
-            except(Exception):
-                try:
-                    path = path[:-2]
-                    if (path.endswith('.')):
-                        path = path + 'c'
-                    else:
-                        path = path + '.c'
-                        files[p[1]] = path
+#This is where processing other files occur.
 
-                        # fileshow(files[p[1]])
-
-                except:
-
-                        print("Error: File Not Found!!!!!!")
-                        return
+#        if not path.endswith(('.txt', '.c')):
+#            try:
+#                if(path.endswith('.')):
+#                    path = path +'txt'
+#                else:
+#                    path = path + '.txt'
+#                    files[p[1]] = path
+#                    fileshow(files[p[1]])
+#
+#            except(Exception):
+#                try:
+#                    path = path[:-2]
+#                    if (path.endswith('.')):
+#                        path = path + 'c'
+#                    else:
+#                        path = path + '.c'
+#                        files[p[1]] = path
+#
+#                        # fileshow(files[p[1]])
+#
+#                except:
+#
+#                        print("Error: File Not Found!!!!!!")
+#                        return
 
         else:
             try:
