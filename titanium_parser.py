@@ -34,6 +34,12 @@ def p_help(p):
 
                 Open a file:
                 <variable name>.open()
+                
+                Show all available C files in a directory:
+                <variable name>.sAll()
+
+                Evaluate all available C files in a directory:
+                <variable name>.eALL()
                 ''')
 
 def p_statement(p):
