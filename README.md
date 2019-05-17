@@ -55,8 +55,6 @@ https://kensybernadeau.github.io/PLP_Titanium/
 ---
 #### Dependencies
 The project utilizes Python 3.x with the PLY package.
-Anaconda 5.3.0
-backports.os 0.1.1
 #### Instructions
 * Install Python 3.x and the PLY package.(Refer to this <a href="https://pythonpedia.com/en/tutorial/10510/python-lex-yacc">page</a> when installing PLY)
 * Download <a href="https://github.com/kensybernadeau/PLP_Titanium/archive/master.zip"> PLP_Titanium </a>
