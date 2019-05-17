@@ -49,6 +49,8 @@ https://www.youtube.com/########
 ### **The GitPage**
 ---
 https://kensybernadeau.github.io/PLP_Titanium/
+Anaconda 5.3.0
+backports.os 0.1.1
 
 ### **Install**
 ---
