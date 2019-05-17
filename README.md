@@ -64,4 +64,4 @@ https://kensybernadeau.github.io/PLP_Titanium/
 
 ### **Final Report**
 ---
-View <a href="https://github.com/kensybernadeau/PLP_Titanium/blob/master/Final%20Report/Final%20Report.md"> Final Report </a>
+View <a href="https://github.com/kensybernadeau/PLP_Titanium/blob/master/Final%20Report/Final_Report.pdf"> Final Report </a>
