@@ -44,7 +44,7 @@ help
 ```
 ### **Video Tutorial**
 ---
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ozrqpSHK8X4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://youtu.be/ozrqpSHK8X4
 
 ### **The GitPage**
 ---
