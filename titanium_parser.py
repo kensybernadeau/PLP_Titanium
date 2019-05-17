@@ -7,6 +7,7 @@ from implementation import evaluate
 from implementation import fileread
 from implementation import fileshow
 from implementation import evaluate_overflow
+from folder_Checkers import check_this, show_this, showAll, evaluateAll
 
 
 tokens = Titaniumlex.tokens
@@ -75,24 +76,52 @@ def p_fun_no_param(p):
     p[0] = (p[3], p[1])
     global files
 
+
+
     if files.get(p[1]) is None:
+        print(p)
+        print(p[0])
+        print(p[1])
+        print(p[2])
+        print(p[3])
+        print(files)
         print("ID Error here", p[1])
 
         return p
 
     if p[3] == 'evaluate':
-#        print(files[p[1]])
-#        if os.path.isdir(files[p[1]]):
-#            print("DIRECTORY")
+        if os.path.isdir(files[p[1]]):
+           # print(files[p[1]])
+           check_this(files[p[1]])
 
-        if files[p[1]].endswith('.c'):
+        elif files[p[1]].endswith('.c'):
+
             evaluate(files[p[1]], 'c')
-
+        # elif files[p[1]].endswith('/'):
+        #     print(files[p[1]])
     elif p[3] == "open":
         fileread(files[p[1]])
 
     elif p[3] == "show":
+        if os.path.isdir(files[p[1]]):
+            return show_this(files[p[1]])
         fileshow(files[p[1]])
+
+    elif p[3] == 'eAll':
+        print("evaluateAll")
+        evaluateAll(files[p[1]])
+        return
+
+    elif p[3] == 'sAll':
+        print("showAll")
+        listAll = list()
+        showAll(files[p[1]], listAll)
+        print(listAll)
+        return
+
+
+
+
         # f = open(duplicatedpath, "r")
 
 #    elif p[3] == 'evaluateOverflow':
@@ -150,63 +179,40 @@ def p_fun_assignment(p):
     global files
 
     if p[3][0] == "process":
-
         path = p[3][1].replace('"', '')
+
         if os.path.isdir(path):
             # print(path)
             print("You are about to evaluate the folder instead of one file.")
-            response = input("Want to proceed this? Y/N")
-            if(response.upper() == "Y"):
-                entries = os.listdir(path)
-                list_New = list()
+            files[p[1]] = path
+            return
 
-                for entry in entries:
-                    if (entry.endswith('.c')):
-                        list_New.append(entry)
+        if not path.endswith(('.txt', '.c')):
+            try:
+                if (path.endswith('.')):
+                    path = path + 'txt'
+                else:
+                    path = path + '.txt'
+                    files[p[1]] = path
+                    fileshow(files[p[1]])
 
-                print("These are the files under evaluation.")
-                print(list_New)
-                for e in list_New:
-                    if path.endswith('/'):
-                        new_Path = path + e
+            except(Exception):
+                try:
+                    path = path[:-2]
+                    if (path.endswith('.')):
+                        path = path + 'c'
                     else:
-                        new_Path = path +'/'+ e
-                    print(new_Path)
-                    evaluate(new_Path, 'c')
-            else:
-                print("Processing aborted.")
-                return
+                        path = path + '.c'
+                        files[p[1]] = path
 
-#This is where processing other files occur.
-
-#        if not path.endswith(('.txt', '.c')):
-#            try:
-#                if(path.endswith('.')):
-#                    path = path +'txt'
-#                else:
-#                    path = path + '.txt'
-#                    files[p[1]] = path
-#                    fileshow(files[p[1]])
-#
-#            except(Exception):
-#                try:
-#                    path = path[:-2]
-#                    if (path.endswith('.')):
-#                        path = path + 'c'
-#                    else:
-#                        path = path + '.c'
-#                        files[p[1]] = path
-#
-#                        # fileshow(files[p[1]])
-#
-#                except:
-#
-#                        print("Error: File Not Found!!!!!!")
-#                        return
+                        # fileshow(files[p[1]])
+                except:
+                    print("Error: File Not Found!!!!!!")
+                    return
 
         else:
             try:
-                print ('File processed!')
+                print('File processed!')
                 files[p[1]] = path
 
             except:
@@ -214,6 +220,12 @@ def p_fun_assignment(p):
 
     else:
         print("Cannot use that method in a assignment")
+
+
+
+
+
+
 
 
 def p_empty(p):

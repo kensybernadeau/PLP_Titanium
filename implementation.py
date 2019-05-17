@@ -159,3 +159,5 @@ def strcpy_check(source_code):
     else:
         print("No strcpy functions found.\n")
     return count_strcpy
+
+

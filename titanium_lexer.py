@@ -6,10 +6,9 @@ import re
 
 # reserved Words
 reserved = {
-    'FUN_NO_PARAM': ['evaluate','evaluateOverflow','open','show'],
+    'FUN_NO_PARAM': ['evaluate','evaluateOverflow','open','show', 'eAll', 'sAll'],
     'FUN_WITHOUT_OPERATION': ['process'],
     'FUN_SINGLE_PARAM': ['open'],
-
 }
 
 # All lexers must provide a list tokens that defines all of the possible token names
@@ -26,6 +25,7 @@ tokens = [
     'EQUALS', 'ID', 'DOT',
     'COMMA', 'LP', 'RP', 'STRING','CHAR',
     'LKEY','RKEY','SEMICOLON',
+             # 'XG'
 ] + list(reserved)
 
 
@@ -38,6 +38,7 @@ t_COMMA = r'\,'
 t_SEMICOLON = r'\;'
 t_LP = r'\('
 t_RP = r'\)'
+# t_XG = r'/'
 
 # Regex Patterns
 reg_fun_no_param = re.compile('|'.join(reserved['FUN_NO_PARAM']))
